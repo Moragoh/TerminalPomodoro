@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 import json
+import json
 import os
 import platform
+import subprocess
+import time
 import subprocess
 import time
 from datetime import datetime
@@ -9,14 +12,14 @@ from datetime import datetime
 """Most of this was written by ChatGPT"""
 
 # Configuration file path
-CONFIG_FILE = "pomodoro_config.json"
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), "pomodoro_settings.json")
 
 main_menu_ascii_art = """                                                                                                  
 ,------.                            ,--.                      
 |  .--. ' ,---. ,--,--,--. ,---.  ,-|  | ,---. ,--.--. ,---.  
 |  '--' || .-. ||        || .-. |' .-. || .-. ||  .--'| .-. | 
 |  | --' ' '-' '|  |  |  |' '-' '\ `-' |' '-' '|  |   ' '-' ' 
-`--'      `---' `--`--`--' `---'  `---'  `---' `--'    `---'                                                                                                                                                                                                                                                                                                                
+`--'      `---' `--`--`--' `---'  `---'  `---' `--'    `---'                                                                                                                                                                                                                                                                                                              
 """
 
 work_ascii_art = """
@@ -198,6 +201,9 @@ def pomodoro_timer(work_duration, short_break_duration, long_break_duration, cyc
 
     # Loop through cycles
     for cycle in range(last_completed_cycle + 1, cycles + 1):
+        total_work_time = config.get(total_work_time_key, 0)
+        longest_time_worked = config.get('longest_time_worked', 0)
+
         # Work session
         print(f"Cycle {cycle}/{cycles}")
         art_to_display = work_ascii_art  # Update ASCII art for work session
@@ -215,6 +221,7 @@ def pomodoro_timer(work_duration, short_break_duration, long_break_duration, cyc
             longest_time_worked_date = today
             config['longest_time_worked'] = longest_time_worked
             config['longest_time_worked_date'] = longest_time_worked_date
+            save_config(config)
 
 
         # Display total work time in hours and minutes
