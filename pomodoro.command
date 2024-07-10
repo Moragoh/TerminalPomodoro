@@ -14,15 +14,15 @@ from datetime import datetime
 # Configuration file path
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "pomodoro_settings.json")
 
-main_menu_ascii_art = """                                                                                                  
+main_menu_ascii_art = r"""                                                                                                  
 ,------.                            ,--.                      
 |  .--. ' ,---. ,--,--,--. ,---.  ,-|  | ,---. ,--.--. ,---.  
 |  '--' || .-. ||        || .-. |' .-. || .-. ||  .--'| .-. | 
 |  | --' ' '-' '|  |  |  |' '-' '\ `-' |' '-' '|  |   ' '-' ' 
-`--'      `---' `--`--`--' `---'  `---'  `---' `--'    `---'                                                                                                                                                                                                                                                                                                              
+`--'      `---' `--`--`--' `---'  `---'  `---' `--'    `---'   
 """
 
-work_ascii_art = """
+work_ascii_art = r"""
                                                                                    
            .---.                         ,-.  
           /. ./|                     ,--/ /|  
@@ -39,7 +39,7 @@ work_ascii_art = """
       '---"                                                            
                                                      
 """
-break_ascii_art = """
+break_ascii_art = r"""
                                                                                                                                            
 ,-.----.                           ___     
 \    /  \                        ,--.'|_   
