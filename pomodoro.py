@@ -288,6 +288,7 @@ def countdown(seconds, total_work_time, current_cycle, total_cycles, art_to_disp
         hours, minutes = format_time(total_work_time)
         print(f"Total time worked today: {hours} hours {minutes} minutes")
         print("\n^s to pause ^r to resume")
+        print("CTRL + C to quit (progress will not be saved)")
         time.sleep(1)
     return seconds
 
