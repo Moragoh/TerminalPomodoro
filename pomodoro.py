@@ -65,12 +65,18 @@ def clear_terminal():
         os.system('clear')
 
 def load_config():
-    """Load configuration from a file."""
+    """Load configuration from a file or create a default one if it doesn't exist."""
     try:
         with open(CONFIG_FILE, 'r') as file:
             return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
+    except FileNotFoundError:
+        default_config = {}  # Define your default configuration here
+        with open(CONFIG_FILE, 'w') as file:
+            json.dump(default_config, file)
+        return default_config
+    except json.JSONDecodeError:
         return {}
+
 
 def save_config(config):
     """Save configuration to a file."""
