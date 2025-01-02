@@ -1,4 +1,4 @@
-# Installation for the Command Line.
+# Installation for the Command Line
 1) On your favorite terminal tool, run
    ```brew tap moragoh/tomo```
 2) Then run
